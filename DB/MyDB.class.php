@@ -7,10 +7,10 @@ class MyDB{
   private $utf;
 
   function __construct(){
-    $this->host = "192.168.116.80:3306";
-    $this->name = "dbim";
-    $this->password = "YI90uplo182jqo_P";
-    $this->mpdb = "webim";
+    $this->host = "*.*.*.*:3306";
+    $this->name = "dbname";
+    $this->password = "password";
+    $this->mpdb = "abc";
     $this->utf = "UTF-8";
     $this->connect();
   }
