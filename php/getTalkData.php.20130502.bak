@@ -1,0 +1,121 @@
+<?php
+header("cache-control:no-cache,must-revalidate");
+header("Content-Type:text/html;charset=utf-8");
+
+include_once('../DB/MyDB.class.php');
+
+//转换文本
+function revert($key)
+{
+  switch($key)
+  {
+    case 'c1':
+      $k = '1';
+      break;
+    case 'c2':
+      $k = '2';
+      break;
+    case 'c3':
+      $k = '3';
+      break;
+    case 'c4':
+      $k = '4';
+      break;
+    case 'c5':
+      $k = '5';
+      break;
+    case 'c6':
+      $k = '6-10';
+      break;
+    case 'c10':
+      $k = '11-20';
+      break;
+    case 'c20':
+      $k = '20+';
+      break;
+    default:
+      $k = '0';    
+  }
+  return $k;
+}
+
+$category = $_GET['category'];
+if($category == 0 || $category == 1001 || $category == 1002)
+{
+  $major_category = -1;
+}
+else
+{
+  $major_category = $_GET['majorCategory'];
+}
+
+$date = $_GET['dt'];
+$dateArr = explode("-", $date);
+if(checkdate($dateArr[1], $dateArr[2], $dateArr[0]) == false)
+{
+  return false;
+}
+
+$thisdate = mktime(0, 0, 0, $dateArr[1], $dateArr[2], $dateArr[0]);
+$nextdate = $thisdate + 3600 * 24;
+
+$sql = "select talkid,count(*) as msgcount from allmsg where ";
+
+if($category == 0 || $category == 1001 || $category == 1002)
+{
+  $sql .= " channel = $category";
+}
+else
+{
+  $sql .= " channel = 0 and postcategoryid=$category ";
+}
+
+if($major_category !== NULL && $major_category != -1)
+{
+  $sql .= " and postmajorcategoryid=$major_category ";
+}
+
+$sql .= " and updatetime >= $thisdate and updatetime < $nextdate group by talkid order by msgcount desc";
+$db = new MyDB();
+$res = $db->query($sql);
+
+//初始化关联数组
+$mc["c20"]=$mc["c10"]=$mc["c6"]=$mc["c5"]=$mc["c4"]=$mc["c3"]=$mc["c2"]=$mc["c1"]=0;
+//分段统计消息数对应的会话数
+while(($result = $db->fetch_assoc($res))) 
+{
+  $msgcount = $result["msgcount"];
+  if($msgcount > 20)
+    $mc["c20"]++;
+  else if($msgcount > 10 && $msgcount <= 20)
+    $mc["c10"]++;
+  else if($msgcount >= 6 && $msgcount <= 10)
+    $mc["c6"]++;
+  else if($msgcount == 5)
+    $mc["c5"]++;
+  else if($msgcount == 4)
+    $mc["c4"]++;
+  else if($msgcount == 3)
+    $mc["c3"]++;
+  else if($msgcount == 2)
+    $mc["c2"]++;
+  else if($msgcount == 1)
+    $mc["c1"]++;
+}
+
+foreach($mc as $key => $value)
+{
+  $k = revert($key);
+  $row["talkratio"] = $k;
+  $row["value"] = $value;
+  $carr[] = $row;
+}
+
+$arr = array(
+  "tableData" => $mc,
+  "chartData" => $carr
+);
+
+$db->close();
+echo json_encode($arr);
+?>

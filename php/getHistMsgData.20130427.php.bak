@@ -1,0 +1,105 @@
+<?php
+    header("cache-control:no-cache,must-revalidate");
+    header("Content-Type:text/html;charset=utf-8");
+
+    include_once('../DB/MyDB.class.php');
+
+    //显示的列数
+    if(isset($_GET['cols']))
+    {
+      $cols = $_GET['cols'];
+    }
+    else
+    {
+      $cols = 'msgcount';
+    }
+
+    //周同比
+    if(isset($_GET['week']))
+    {
+      $week = $_GET['week'];
+    }
+
+    //渠道
+    if(isset($_GET['clienttype']))
+    {
+      $clienttype = $_GET['clienttype'];
+    }
+    else
+    {
+      $clienttype = 0;
+    }
+
+    $where = " where clienttype=$clienttype";
+
+    if(isset($week))
+    {
+      $where .= " and dayofweek(analysisdate)=$week ";
+    }
+
+    //频道
+    if(isset($_GET['channel']))
+    {
+      $channel = $_GET['channel'];
+    }
+    else
+    {
+      $channel = 0;
+    }
+
+    $where .= " and channel=$channel ";
+
+    //起止日期
+    if(isset($_GET['date_start']))
+    {
+      $where .= "and analysisdate >= '{$_GET['date_start']}' ";
+    }
+    if(isset($_GET['date_end']))
+    {
+      $where .= "and analysisdate <= '{$_GET['date_end']}' ";
+    }
+
+    $db = new MyDB();
+    $sql = "select analysisdate,$cols from msganalysis $where order by analysisdate asc";
+
+    $firstRow = array();
+    $tarr = array();
+    $carr = array();
+    $res = $db->query($sql);
+
+    $firstRow = array('analysisdate');
+    $colArr = explode(',',$cols);
+    foreach($colArr as $value)
+      $firstRow[] = $value;
+
+    $tarr[] = $firstRow;
+
+    //对结果集进行处理，将结果封装在数组中
+    while(($result = $db->fetch_row($res)))
+    {
+      //table data，存储在顺序数组中
+      $tarr[] = $result;
+      
+      //chart data，存储在关联数组中
+      $index = 0;
+      $analysisdate = $result[$index++];
+      $row["analysisdate"] = $analysisdate;
+      foreach($colArr as $value)
+      {
+	$row[$value] = round($result[$index],2);
+	$index++;
+      }
+      $carr[] = $row;
+    }
+
+    $db->close();
+
+    $arr = array(
+      "tableData" => $tarr,
+      "chartData" => $carr
+    );
+
+    //var_dump($arr);
+    echo json_encode($arr);
+
+?>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title>高性能组数据统计</title>
+  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="../bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+  <script type="text/javascript" src="../js/jquery-1.8.0.js"></script>
+  <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript" src="../amcharts/amcharts.js"></script>
+  <script type="text/javascript" src="../js/talk.js"></script>
+  <style type="text/css">
+    body{
+      padding-right:9px;
+    }
+  </style>
+</head>
+<body>
+<!-- container -->
+  <div>
+  <!--Body content -->
+    <div class="well form-search">
+      <p>大类:<select name="category" onchange="selectMajor()" id="category" class="input-medium"> 
+            <option value="0" selected>所有主站</option>
+	    <option value="2">房产</option>
+	    <option value="1">二手物品</option>
+	    <option value="11">车辆买卖</option>
+	    <option value="15">宠物</option>
+	    <option value="14">票务</option>
+	    <option value="7">同城活动</option>
+	    <option value="6">同乡/技能交换</option>
+	    <option value="4">全职招聘</option>
+	    <option value="12">兼职招聘</option>
+	    <option value="5">全职求职简历</option>
+	    <option value="13">兼职求职简历</option>
+	    <option value="16">本地生活服务</option>
+	    <option value="3">本地商务服务</option>
+	    <option value="9">教育培训</option>
+	    <option value="1001">交友</option>
+            <option value="1002">蚂蚁</option>
+        </select> 小类: <select name="majorCategory" id="majorCategory" class="input-medium">
+          <option value="-1">请选择</option>
+        </select>
+      </p>
+      日期:
+      <div id="datetimepicker1" class="input-append date">
+        <input class="input-medium" type="text" id="dt" name="dt">
+        <span class="add-on">
+          <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+        </span>
+      </div>
+      <button class="btn btn-primary" type="button" onclick="submit();">查询</button>
+    </div>
+    <h3>消息数分段统计结果</h3>
+    <div id="chart_div" style="height:400px;padding:0px;" class="well"></div>
+    <div id="table_div" class="well"><table align="center" id="table_data" border="1" cellspacing="0"></table></div>
+  </div>
+<hr/>
+<script type="text/javascript">
+  $(function(){
+    $('#datetimepicker1').datetimepicker({
+      format: 'yyyy-MM-dd',
+      language: 'en',
+      pickDate: true,
+      pickTime: false
+    });
+   $('#datetimepicker1').datetimepicker('setDate',new Date().setDate(new Date().getDate()-1)); 
+  });
+</script>
+</body>
+</html>
