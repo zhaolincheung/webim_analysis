@@ -51,7 +51,7 @@
 
     $where = "where postcategoryid=$category and postmajorcategoryid=$major_category and analysisdate='$date'";
 
-    $sql = "select c20,c10,c6,c5,c4,c3,c2,c1 from talkcount $where order by analysisdate asc";
+    $sql = "select c20,c10,c6,c5,c4,c3,c2,c1 from xxx $where order by analysisdate asc";
 
     $db = new MyDB();
     $res = $db->query($sql);

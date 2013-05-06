@@ -47,7 +47,7 @@ if(isset($_GET['date_end']))
 }
 
 $db = new MyDB();
-$sql = "select analysisdate,version,$col from danalysis $where order by analysisdate asc";
+$sql = "select analysisdate,version,$col from xxx $where order by analysisdate asc";
 $res = $db->query($sql);
 
 //对结果集进行处理，将同一天的数据封装在一条记录中

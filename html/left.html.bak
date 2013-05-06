@@ -18,7 +18,8 @@
     <li><a href="../html/histMsg.html" target="mainFrame">历史消息数</a></li>
     <li><a href="../html/talk.html" target="mainFrame">当日会话数</a></li>
     <li><a href="../html/talkPeriod.html" target="mainFrame">某段时间会话数</a></li>
-    <li><a href="../html/dingdongActive.html" target="mainFrame">活跃</a></li>
+    <li><a href="../html/dingdongActive.html" target="mainFrame">叮咚活跃</a></li>
+    <li><a href="../html/dingdong.html" target="mainFrame">叮咚数据</a></li>
   </ul>
   <!--a href="#GJMenu" class="nav-header menu-first collapsed" data-toggle="collapse">AB</a>
   <ul id="GJMenu" class="nav nav-list collapse menu-second">

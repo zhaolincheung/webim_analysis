@@ -24,22 +24,22 @@
     <div class="well form-search">
       <p>大类:<select name="category" onchange="selectMajor()" id="category" class="input-medium"> 
             <option value="0" selected>所有主站</option>
-	    <option value="2">a</option>
-	    <option value="1">b</option>
-	    <option value="11">c</option>
-	    <option value="15">d</option>
-	    <option value="14">e</option>
-	    <option value="7">f</option>
-	    <option value="6">g</option>
-	    <option value="4">h</option>
-	    <option value="12">i</option>
-	    <option value="5">j</option>
-	    <option value="13">k</option>
-	    <option value="16">l</option>
-	    <option value="3">m</option>
-	    <option value="9">n</option>
-	    <option value="1001">o</option>
-            <option value="1002">p</option>
+	    <option value="2">房产</option>
+	    <option value="1">二手物品</option>
+	    <option value="11">车辆买卖</option>
+	    <option value="15">宠物</option>
+	    <option value="14">票务</option>
+	    <option value="7">同城活动</option>
+	    <option value="6">同乡/技能交换</option>
+	    <option value="4">全职招聘</option>
+	    <option value="12">兼职招聘</option>
+	    <option value="5">全职求职简历</option>
+	    <option value="13">兼职求职简历</option>
+	    <option value="16">本地生活服务</option>
+	    <option value="3">本地商务服务</option>
+	    <option value="9">教育培训</option>
+	    <option value="1001">交友</option>
+            <option value="1002">蚂蚁</option>
         </select> 小类: <select name="majorCategory" id="majorCategory" class="input-medium">
           <option value="-1">请选择</option>
         </select>

@@ -1,5 +1,5 @@
 <?php
-    define('CODE_BASE2','/server/www/ganji/ganji_online/code_base2');
+    define('CODE_BASE2','/server/www/code_base');
     $GLOBALS['THRIFT_ROOT'] = !isset($GLOBALS['THRIFT_ROOT']) ? CODE_BASE2 . '/third_part/thrift-0.5.0' : $GLOBALS['THRIFT_ROOT'];
     
     require_once $GLOBALS['THRIFT_ROOT'].'/Thrift.php';
@@ -18,7 +18,7 @@
     INI_SET('DISPLAY_ERRORS','ON');
     //INI_SET('DISPLAY_ERRORS',E_ALL);
    
-    $socket = new TSocket('hive.corp.ganji.com',13080);
+    $socket = new TSocket('hive.corp.xxx.com',13080);
     $socket->setDebug(TRUE); 
     
     // 设置接收超时（毫秒）
@@ -36,12 +36,8 @@
         echo $tx->getMessage();
     }
      
-    //查找房产的详情页PV UV
-    //$taskId = $client->submitTask('zhaolianxiang@ganji.com','web',"select count(*), count(distinct uuid) from web_pv_log_detail3 where dt = '2013-04-19' and gjch regexp '^/fang/[^@]*/detail';");
-    //查看全站详情页的PV UV
-    //$taskId = $client->submitTask('zhaolianxiang@ganji.com','web',"select count(*), count(distinct uuid) from web_pv_log_detail3 where dt = '2013-04-22' and gjch regexp '[^@]*/detail';");
     //获取各个类目某一天的 PV UV
-    $taskId = $client->submitTask('zhaolianxiang@ganji.com','web',"select regexp_extract(gjch, '^/([^/]+)', 1), count(*), count(distinct uuid) from web_pv_log_detail3 where dt = '2013-04-22' and gjch regexp '[^@]*/detail' GROUP BY regexp_extract(gjch, '^/([^/]+)', 1);");
+    $taskId = $client->submitTask('xxx@xx.com','web',"select regexp_extract(gjch, '^/([^/]+)', 1), count(*), count(distinct uuid) from xxx where dt = '2013-04-22' and gjch regexp '[^@]*/detail' GROUP BY regexp_extract(gjch, '^/([^/]+)', 1);");
     
     if($taskId <= 0){
 	echo 'error submit';

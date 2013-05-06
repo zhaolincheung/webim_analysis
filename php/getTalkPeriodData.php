@@ -38,7 +38,7 @@
     }
 
     $db = new MyDB();
-    $sql = "select analysisdate,c20,c10,c6,c5,c4,c3,c2,c1 from talkcount $where order by analysisdate asc";
+    $sql = "select analysisdate,c20,c10,c6,c5,c4,c3,c2,c1 from xxx $where order by analysisdate asc";
 
     $firstRow = array();
     $tarr = array();

@@ -10,7 +10,7 @@
   <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
   <script type="text/javascript" src="../amcharts/amcharts.js"></script>
-  <script type="text/javascript" src="../js/dingdongActive.js"></script>
+  <script type="text/javascript" src="../js/talkPeriod.js"></script>
   <style type="text/css">
     body{
       padding-right:9px;
@@ -22,22 +22,39 @@
   <div>
   <!--Body content -->
     <div class="well form-search">
-      <p>查询项目: <select name="col" id="col" class="input-medium">
-	  <option value="useractive" selected>用户活跃性</option>
-	  <option value="installactive">安装活跃性</option>
-	  <option value="avgonlinetime">平均在线时长</option>
-	  <option value="onedayexist">一日留存</option>
-	  <option value="threedayexist">三日留存</option>
-	  <option value="addusercount">新增用户数</option>
+      <p>大类:<select name="category" onchange="selectMajor()" id="category" class="input-medium"> 
+            <option value="0" selected>所有主站</option>
+	    <option value="2">房产</option>
+	    <option value="1">二手物品</option>
+	    <option value="11">车辆买卖</option>
+	    <option value="15">宠物</option>
+	    <option value="14">票务</option>
+	    <option value="7">同城活动</option>
+	    <option value="6">同乡/技能交换</option>
+	    <option value="4">全职招聘</option>
+	    <option value="12">兼职招聘</option>
+	    <option value="5">全职求职简历</option>
+	    <option value="13">兼职求职简历</option>
+	    <option value="16">本地生活服务</option>
+	    <option value="3">本地商务服务</option>
+	    <option value="9">教育培训</option>
+	    <option value="1001">交友</option>
+            <option value="1002">蚂蚁</option>
+        </select> 小类: <select name="majorCategory" id="majorCategory" class="input-medium">
+          <option value="-1">请选择</option>
         </select>
       </p>
-      <p>显示版本数：
-	<input type="checkbox" name="allVersions" id="allVersions" value="y" checked onclick="changeCol(this);"><label for="allVersions" >全选</label>
+      <p>显示会话数：
+	<input type="checkbox" name="allCols" id="allCols" value="y" checked onclick="changeCol(this);"><label for="allCols" >全选</label>
 	<br/>
-	<input type="checkbox" name="version" value="1.0.5" id="version1" checked><label for="version1">1.0.5</label>
-	<input type="checkbox" name="version" value="2.0.0" id="version2" checked><label for="version2">2.0.0</label>
-	<input type="checkbox" name="version" value="2.0.1" id="version3" checked><label for="version3">2.0.1</label>
-	<input type="checkbox" name="version" value="2.1.0" id="version4" checked><label for="version4">2.1.0</label>
+	<input type="checkbox" name="col" value="c20" id="c20" checked><label for="c20">20+</label>
+	<input type="checkbox" name="col" value="c10" id="c10" checked><label for="c10">11-20</label>
+	<input type="checkbox" name="col" value="c6" id="c6" checked><label for="c6">6-10</label>
+	<input type="checkbox" name="col" value="c5" id="c5" checked><label for="c5">5</label>
+	<input type="checkbox" name="col" value="c4" id="c4" checked><label for="c4">4</label>
+	<input type="checkbox" name="col" value="c3" id="c3" checked><label for="c3">3</label>
+	<input type="checkbox" name="col" value="c2" id="c2" checked><label for="c2">2</label>
+	<input type="checkbox" name="col" value="c1" id="c1" checked><label for="c1">1</label>
       </p>
       起止日期:
       <div id="datetimepicker1" class="input-append date">
@@ -54,9 +71,9 @@
       </div>
       <button class="btn btn-primary" type="button" onclick="submit();">查询</button>
     </div>
-    <h3>活跃统计结果</h3>
+    <h3>消息数分段统计结果</h3>
     <div id="chart_div" style="height:400px;padding:0px;" class="well"></div>
-    <div id="table_div" class="well" align="center"></div>
+    <div id="table_div" class="well"><table align="center" id="table_data" border="1" cellspacing="0"></table></div>
   </div>
 <hr/>
 <script type="text/javascript">

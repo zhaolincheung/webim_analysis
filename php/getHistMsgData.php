@@ -64,9 +64,9 @@
         if(strstr($cols, "usercount") == FALSE){
             $sql .= "usercount,";
         }
-        $sql .= "$cols from msganalysis $where order by analysisdate asc";
+        $sql .= "$cols from xxx $where order by analysisdate asc";
     }else{
-        $sql = "select analysisdate,$cols from msganalysis $where order by analysisdate asc";
+        $sql = "select analysisdate,$cols from xxx $where order by analysisdate asc";
     }
 
     $firstRow = array();

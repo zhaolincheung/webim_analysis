@@ -1,9 +1,9 @@
 
-namespace java com.xxx.data.hive.thrift
+namespace java com.ganji.data.hive.thrift
 
 /**
  * 向HADOOP提交HIVE任务类。典型的用法是提交任务，轮询任务是否完成，取得任务的结果URI，读取结果文件。
- *           long taskId = client.submitTask("xxx@xx.com", "web", "select * from xxx where dt = '2013-04-10' limit 10;");
+ *           long taskId = client.submitTask("lihongzhong@ganji.com", "web", "select * from web_pv_log_detail3 where dt = '2013-04-10' limit 10;");
  *           if (taskId <=0) {
  *               System.out.println("error submit");
  *               return;
@@ -22,7 +22,7 @@ namespace java com.xxx.data.hive.thrift
  */
 service Hive {
     /** 提交任务
-     * user - 用户名，工作邮箱，如abc@xx.com
+     * user - 用户名，ganji邮箱，如abc@ganji.com
      * env - 提交的环境。目前支持两个环境： mobile - 移动端， web - 主站。
      * sql - 提交的sql语句。
      * 返回值:成功提交返回大于0的任务id值，此id用于后续查询。失败返回0或-1.
