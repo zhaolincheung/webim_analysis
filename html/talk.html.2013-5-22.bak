@@ -6,12 +6,10 @@
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
   <link href="../bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-  <link rel="stylesheet" type="text/css" href="../jPaginate/style.css" media="screen"/>
   <script type="text/javascript" src="../js/jquery-1.8.0.js"></script>
   <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
   <script type="text/javascript" src="../amcharts/amcharts.js"></script>
-  <script type="text/javascript" src="../jPaginate/jquery.paginate.js"></script>
   <script type="text/javascript" src="../js/talk.js"></script>
   <style type="text/css">
     body{
@@ -59,7 +57,7 @@
     <div id="chart_div" style="height:400px;padding:0px;" class="well"></div>
     <div id="table_div" class="well"><table align="center" id="table_data" border="1" cellspacing="0"></table></div>
     <h3>消息数统计结果</h3>
-    <div id="msgtable_div" class="well"><table align="center" id="msgtable_data" border="1" cellspacing="0"></table><div id="page"></div></div>
+    <div id="msgtable_div" class="well"><table align="center" id="msgtable_data" border="1" cellspacing="0"></table></div>
   </div>
 <hr/>
 <script type="text/javascript">

@@ -10,7 +10,7 @@
   <script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="../bootstrap/js/bootstrap-datetimepicker.min.js"></script>
   <script type="text/javascript" src="../amcharts/amcharts.js"></script>
-  <script type="text/javascript" src="../js/histMsg.js"></script>
+  <script type="text/javascript" src="../js/dingdong.js"></script>
   <style type="text/css">
     body{
       padding-right:9px;
@@ -40,31 +40,21 @@
 	  <option value="9">教育培训</option>
 	  <option value="13">技能交换</option>
 	  <option value="4">商务服务</option>
-        </select> 渠道: <select name="clienttype" id="clienttype" class="input-medium">
-          <option value="0">total</option>
-          <option value="1">电脑</option>
-          <option value="2">手机</option>
-          <option value="3">赶集叮咚</option>
         </select>
       </p>
       <p>显示列数：
 	<input type="checkbox" name="allCols" id="allCols" value="y" checked onclick="changeCol(this);"><label for="allCols" >全选</label>
 	<br/>
-	<input type="checkbox" name="col" value="msgcount" id="msgcount" checked><label for="msgcount">消息数</label>
-	<input type="checkbox" name="col" value="onlinemsgcount" id="onlinemsgcount" checked><label for="onlinemsgcount">在线消息数</label>
-	<input type="checkbox" name="col" value="offlinemsgcount" id="offlinemsgcount" checked><label for="offlinemsgcount">离线消息数</label>
-	<input type="checkbox" name="col" value="viewermsgcount" id="viewermsgcount" checked><label for="viewermsgcount">看贴人消息数</label>
-	<input type="checkbox" name="col" value="posterMsgCount" id="posterMsgCount" checked><label for="posterMsgCount">发帖人消息数</label>
-	<input type="checkbox" name="col" value="vieweronlinemsgcount" id="vieweronlinemsgcount" checked><label for="vieweronlinemsgcount">看帖人在线消息数</label>
-	<input type="checkbox" name="col" value="posteronlinecount" id="posteronlinecount" checked><label for="posteronlinecount">发帖人在线消息数</label>
-	<input type="checkbox" name="col" value="viewercount" id="viewercount" checked><label for="viewercount">看帖人数</label>
-	<input type="checkbox" name="col" value="postercount" id="postercount" checked><label for="postercount">发帖人数</label>
-	<input type="checkbox" name="col" value="usercount" id="usercount" checked><label for="usercount">总的人数</label>
-	<input type="checkbox" name="col" value="perviewermsgcount" id="perviewermsgcount" checked><label for="perviewermsgcount">看帖人均消息数</label>
-	<input type="checkbox" name="col" value="perpostermsgcount" id="perpostermsgcount" checked><label for="perpostermsgcount">发帖人均消息数</label>
-	<input type="checkbox" name="col" value="perusermsgcount" id="perusermsgcount" checked><label for="perusermsgcount">总的人均消息数</label>
-	<input type="checkbox" name="col" value="detailpv" id="detailpv" checked><label for="detailpv">详情页PV</label>
-	<input type="checkbox" name="col" value="detailuv" id="detailuv" checked><label for="detailuv">详情页UV</label>
+	<input type="checkbox" name="col" value="msgcount" id="msgcount" checked><label for="msgcount">下载页</label>
+	<input type="checkbox" name="col" value="onlinemsgcount" id="onlinemsgcount" checked><label for="onlinemsgcount">下载</label>
+	<input type="checkbox" name="col" value="offlinemsgcount" id="offlinemsgcount" checked><label for="offlinemsgcount">下载IP</label>
+	<input type="checkbox" name="col" value="viewermsgcount" id="viewermsgcount" checked><label for="viewermsgcount">下载率</label>
+	<input type="checkbox" name="col" value="posterMsgCount" id="posterMsgCount" checked><label for="posterMsgCount">登陆成功次数</label>
+	<input type="checkbox" name="col" value="vieweronlinemsgcount" id="vieweronlinemsgcount" checked><label for="vieweronlinemsgcount">登陆成功人数</label>
+	<input type="checkbox" name="col" value="posteronlinecount" id="posteronlinecount" checked><label for="posteronlinecount">发消息数</label>
+	<input type="checkbox" name="col" value="viewercount" id="viewercount" checked><label for="viewercount">发消息人数</label>
+	<input type="checkbox" name="col" value="postercount" id="postercount" checked><label for="postercount">消息数/人数</label>
+	<input type="checkbox" name="col" value="usercount" id="usercount" checked><label for="usercount">发消息人数/登陆人数</label>
       </p>
       <p>周同比: <select name="week" id="week" class="input-medium">
 	<option value="-1">不限</option>
@@ -92,7 +82,7 @@
       </div>
       <button class="btn btn-primary" type="button" onclick="submit();">查询</button>
     </div>
-    <h3>历史消息数统计结果</h3>
+    <h3>叮咚数据统计结果</h3>
     <div id="chart_div" style="height:400px;padding:0px;" class="well"></div>
     <div id="table_div" class="well" align="center"></div>
   </div>

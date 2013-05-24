@@ -1,6 +1,6 @@
 <?php
-  define('CODE_BASE2','/server/www/code_base');
-  require_once CODE_BASE . '/app/category/CategoryNamespace.class.php';
+  define('CODE_BASE2','/server/www/ganji/ganji_online/code_base2');
+  require_once CODE_BASE2 . '/app/category/CategoryNamespace.class.php';
   
   //var_dump(CategoryNamespace::getAllCategory());
   $cid = $_GET['category'];

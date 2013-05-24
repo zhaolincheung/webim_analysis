@@ -1,6 +1,6 @@
 <?php
-    define('CODE_BASE2','/server/www/code_base');
-    require_once CODE_BASE . '/app/category/CategoryNamespace.class.php';
+    define('CODE_BASE2','/server/www/ganji/ganji_online/code_base2');
+    require_once CODE_BASE2 . '/app/category/CategoryNamespace.class.php';
 	
     //include_once('../DB/MyDB.class.php');
     include_once('/data/webim/analys/DB/MyDB.class.php');
@@ -39,7 +39,7 @@
         $thisdate = mktime(0, 0, 0, $dateArr[1], $dateArr[2], $dateArr[0]);
         $nextdate = $thisdate + 3600 * 24;
 
-        $sql = "select talkid,count(*) as xxx from allmsg where ";
+        $sql = "select talkid,count(*) as msgcount from allmsg where ";
 
         if($category == 0 || $category == 1001 || $category == 1002){
             $sql .= " channel = $category";
@@ -83,7 +83,7 @@
         //echo json_encode($mc);
         
         //insert table 'talkcount'
-        $sql_insert = "insert into xxx(analysisdate,postcategoryid,postmajorcategoryid,c20,c10,c6,c5,c4,c3,c2,c1) values('";
+        $sql_insert = "insert into talkcount(analysisdate,postcategoryid,postmajorcategoryid,c20,c10,c6,c5,c4,c3,c2,c1) values('";
         $sql_insert .= $date . "',";
         $sql_insert .= $category . ",";
         $sql_insert .= $majorCategory . ",";

@@ -7,34 +7,34 @@
     //转换文本
     function revert($key){
         switch($key){
-	        case 'c1':
-	            $k = '1';
-	            break;
-	        case 'c2':
-	            $k = '2';
-	            break;
-	        case 'c3':
-	            $k = '3';
-	            break;
-	        case 'c4':
-	            $k = '4';
-	            break;
-	        case 'c5':
-	            $k = '5';
-	            break;
-	        case 'c6':
-	            $k = '6-10';
-	            break;
-	        case 'c10':
-	            $k = '11-20';
-	            break;
-	        case 'c20':
-	            $k = '20+';
-	            break;
-	        default:
-	            $k = '0';    
-        }
-        return $k;
+            case 'c1':
+                $k = '1';
+                break;
+            case 'c2':
+                $k = '2';
+                break;
+            case 'c3':
+                $k = '3';
+                break;
+            case 'c4':
+                $k = '4';
+                break;
+            case 'c5':
+                $k = '5';
+                break;
+            case 'c6':
+                $k = '6-10';
+                break;
+            case 'c10':
+                $k = '11-20';
+                break;
+            case 'c20':
+                $k = '20+';
+                break;
+            default:
+                $k = '0';    
+            }
+            return $k;
     }
 
     $category = $_GET['category'];
@@ -51,7 +51,7 @@
 
     $where = "where postcategoryid=$category and postmajorcategoryid=$major_category and analysisdate='$date'";
 
-    $sql = "select c20,c10,c6,c5,c4,c3,c2,c1 from xxx $where order by analysisdate asc";
+    $sql = "select c20,c10,c6,c5,c4,c3,c2,c1 from talkcount $where order by analysisdate asc";
 
     $db = new MyDB();
     $res = $db->query($sql);
